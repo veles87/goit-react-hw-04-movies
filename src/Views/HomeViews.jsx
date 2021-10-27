@@ -17,7 +17,7 @@ export default function HomeViews() {
 
   return (
     <div className={s.container}>
-      <PageHeading text="Popular movies" />
+      <PageHeading text="Top films for today:" />
       <MovieList movies={movies} />
     </div>
   );

@@ -60,7 +60,7 @@ export default function MovieViews() {
   //! console.log(movies);
   return (
     <div className={s.container}>
-      <PageHeading text="Find movies by name" />
+      <PageHeading text="Search for a movie by name:" />
 
       <form onSubmit={onSubmitForm} action="">
         <input
