@@ -1,23 +1,52 @@
+@import-normalize *,
+*:before,
+*:after {
+  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
 body {
+  /* max-width: 1300px; */
+  margin: 0 auto;
+
+  font-family: Andika New Basic, sans-serif;
+  color: #fc6705;
+  background-color: rgb(32, 30, 30);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to right, #ae00ff70, #8c00ffd7, #8400ff69);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-ul,
-li {
-  list-style-type: none;
+  padding: 0;
 }
 
 a {
+  font-size: inherit;
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 0 15px;
 }

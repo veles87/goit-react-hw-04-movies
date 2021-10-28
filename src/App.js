@@ -1,75 +1,41 @@
-import { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Nav from './components/AppBar/Nav';
+import routes from './routes';
+import NotFoundView from './views/NotFoundView';
+import Loader from './components/Loader/Loader';
+import s from './index.css';
 
-//react-loader-spinner
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-
-//Navigation
-import { Navigation } from './components/Navigation/Navigation';
-//import { routes } from './utils/routes';
-import './App.css';
-//Views
-//  import  HomeViews  from './Views/HomeViews';
-// import  MovieViews  from './Views/MovieViews';
-// import  MovieDetailsPageViews  from './Views/MovieDetailsPageViews';
-// import  NotFound  from './Views/NotFound/NotFound';
-
-//Views
-const HomeViews = lazy(() =>
-  import('./Views/HomeViews.jsx' /* webpackChunkName: "home" */),
+const HomeView = lazy(() =>
+  import('./views/HomeView.js' /* webpackChunkName: "home-view" */),
 );
-const MovieViews = lazy(() =>
-  import('./Views/MovieViews.jsx' /* webpackChunkName: "movie" */),
-);
-const MovieDetailsPageViews = lazy(() =>
+
+const SearchMovieView = lazy(() =>
   import(
-    './Views/MovieDetailsPageViews.jsx' /* webpackChunkName: "movie-details" */
+    './views/SearchMovieView.js' /* webpackChunkName: "search-movies-view" */
   ),
 );
-const NotFound = lazy(() =>
-  import('./Views/NotFound/NotFound.jsx' /* webpackChunkName: "not-found" */),
+
+const MoviesDetailsView = lazy(() =>
+  import(
+    './views/MoviesDetailsView.js' /* webpackChunkName: "movies-details-view" */
+  ),
 );
 
-function App() {
-  return (
-    <div className="App">
-      <Navigation />
-      <hr />
-      <Suspense
-        fallback={
-          <div>
-            <Loader
-              type="MutatingDots"
-              //type="Watch"
-              color="#00BFFF"
-              height={80}
-              width={80}
-              timeout={3000}
-            />
-          </div>
-        }
-      >
+const App = () => (
+  <div>
+    <Nav />
+    <Suspense fallback={<Loader />}>
+      <div className={s.container}>
         <Switch>
-          <Route path="/" exact>
-            <HomeViews />
-          </Route>
-
-          <Route path="/movies" exact>
-            <MovieViews />
-          </Route>
-
-          <Route path="/movies/:movieId">
-            <MovieDetailsPageViews />
-          </Route>
-
-          <Route>
-            <NotFound />
-          </Route>
+          <Route exact path={routes.home} component={HomeView} />
+          <Route exact path={routes.movies} component={SearchMovieView} />
+          <Route path={routes.movieId} component={MoviesDetailsView} />
+          <Route component={NotFoundView} />
         </Switch>
-      </Suspense>
-    </div>
-  );
-}
+      </div>
+    </Suspense>
+  </div>
+);
 
 export default App;

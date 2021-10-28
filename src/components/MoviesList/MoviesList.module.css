@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: -20px; */
+  padding-bottom: 30px;
+}
+
+.item {
+  width: 400px;
+  margin: 25px;
+  text-align: center;
+  background-color: rgb(255, 136, 0);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.item:hover {
+  transform: scale(1.01);
+}
+
+.link:hover .title {
+  color: rgb(248, 100, 14);
+}
